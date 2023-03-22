@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   {% include 'partials/head.html' %}
+   
+      <style>
+         li {
+         font-size: 0.95rem;
+         line-height: 1.7rem;
+         }      
+        
+         .rectangle{
+         background-color: #ffb3b3;
+         padding: 20px;
+         }
+         .rectangle:hover{
+         background-color:#ffe6e6;
+         }
+         .wrapper{            
+            text-align: center;
+            height: 300px;
+            padding: 12px;            
+        }
+      </style>
+   
+   <body>
+      <!-- Main Navigation -->
+      <header>
+         
+         <section>
+            <div class="wrapper">
+               <img src="{{recipe.image}}">
+            </div>
+         </section>
+       
+      </header>
+      <!-- Main Navigation -->
+      <!-- Main Layout -->
+      <main>
+         <div class="container-fluid mt-5 mt-md-0 mb-5">
+            <!-- Grid row -->
+            <div class="row" style="margin-top: -100px;">
+               <!-- Grid column -->
+               <div class="col-md-12 px-lg-5">
+                  <!-- Card -->
+                  <div class="card pb-5 mx-md-3">
+                     
+                     
+
+                     <div class="card-body">
+                        <div class="container">
+                           <!-- Section heading -->
+                           <h1 class="text-center h1 pt-4 mb-3">
+                              <strong>{{recipe.title}}</strong>
+                           </h1>                           
+                           <hr>
+                           <div class="row">
+                              <div class="col-md-12 col-xl-12 d-flex justify-content-center">
+                                 <div class="d-inline">
+                                    <label for="calories">Prep:</label>
+                                    <span id="calories" class="border rectangle">{{recipe.prep_time}} mins</span>
+                                 </div>
+                                 <div class="d-inline">
+                                    <label for="carbs" class="mx-2">Servings:</label>
+                                    <span id="carbs" class="border rectangle">{{recipe.servings}}</span>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Grid row -->
+                           <div class="row row pt-lg-5 pt-3">
+                              <!-- Grid column -->
+                              <div class="col-md-12 col-xl-12">
+                                 <!-- Grid row -->
+                                 <!---------------------------------------------------------------------------------------------------->
+                                 <p> {{recipe.description|safe}}</p>
+                                 <div class="row">
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+                                       <div class="jumbotron" style="background-color: #f5f5f0">
+                                          <h1>Ingredients:</h1>
+                                          {% for ingredient in recipe.ingredients.all%}
+                                          <ol>{{ingredient|safe}}</ol>
+                                          {% endfor %}
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+                                       <div class="jumbotron" style="background-color: #f5f5f0">
+                                          <h1>Instructions:</h1>
+                                          {% for steps in recipe.instructions%}
+                                             {% for step in steps %}
+                                          <p> {{step|safe}}</p>
+                                          {% endfor %}
+                                          {% endfor %}
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+                                       <div class="jumbotron" style="background-color: #f5f5f0">                                          
+                                          <h3>Type:</h3>
+                                          {% for type in recipe.type%}                                              
+                                          <h4> {{type}}</h4>
+                                          {% endfor %}
+                                          <br>
+                                          {% for cuisine in recipe.cuisine%}                                             
+                                          <h4> Cuisine:  {{cuisine}}</h4>
+                                          {% endfor %}
+                                          <br>
+                                          {% for occasion in recipe.occasion%}                                             
+                                          <h4> Occasion:  {{occasion}}</h4>
+                                          {% endfor %}
+                                       </div>
+                                       {% if recipe.very_healthy%}  
+                                       <div class="jumbotron" style="background-color: #f5f5f0">
+                                                                                  
+                                          <h3>Diet:</h3>                                          
+                                          <i class="fa-solid fa-check"></i><h4>Heathy </h4>                                          
+                                       </div>
+                                       {% endif %}
+                                    </div>
+                                 </div>
+                                 <!---------------------------------------------------------------------------------------------------->
+                                 <!-- Grid row -->
+                                 <div class="row my-5">
+                                    <!-- Grid column -->
+                                    <div class="col-md-12 text-center">
+                                       <h3>Plan your meal! Choose the date and time to add this recipe to you calendar <br>
+                                           and get a reminder to buy the ingredients:</h3><br>
+                                       <form method="post" action="{%url 'add_to_calendar' recipe.id%}">
+                                          {%csrf_token%}
+                                          {{form.as_p}}
+                                       <button name="recipe" class="btn btn-red btn-rounded btn-lg white-text font-weight-bold ml-lg-0" type="submit">
+                                          <i class="white-text mr-2" aria-hidden="true"></i>Add to my Calendar</button>
+                                       </form>
+                                       <div>
+                                          <button href="{% url 'add_favorite' recipe.id %}" name="favorite" class="btn btn-blue btn-rounded btn-lg white-text font-weight-bold ml-lg-0" type="submit">
+                                             <i class="white-text mr-2" aria-hidden="true"></i>Add to My Recipes</button>
+                                       </div>
+                                       <h4 class="text-center font-weight-bold dark-grey-text mt-3 mb-3">
+                                          <strong>Share this Recipe: </strong>
+                                       </h4>
+                                       <button type="button" class="btn btn-fb btn-sm">
+                                       <i class="fab fa-facebook-f left"></i> Facebook</button>
+                                       <!-- Twitter -->
+                                       <button type="button" class="btn btn-tw btn-sm">
+                                       <i class="fab fa-twitter left"></i> Twitter</button>
+                                       <!-- Google + -->
+                                       <button type="button" class="btn btn-gplus btn-sm">
+                                       <i class="fab fa-google-plus-g left"></i> Google +</button>
+                                    </div>
+                                    <!-- Grid column -->
+                                 </div>
+                                 <!-- Grid row -->
+                                 <hr class="mt-5">
+                                 <!-- Section: Leave a reply (Not Logged In User) -->
+                              </div>
+                              <!-- Grid column -->
+                           </div>
+                           <!-- Grid row -->
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Card -->
+               </div>
+               <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+            <div class="text-center mt-5">
+               <h1><a href="{% url 'home' %}">Home</h1></a>
+            </div>
+         </div>
+      </main>
+      
+      {% include 'partials/footer.html' %}
+   </body>
+</html>

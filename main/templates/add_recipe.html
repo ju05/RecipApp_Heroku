@@ -1,0 +1,21 @@
+{% include 'partials/head.html' %}
+   
+
+   {% block content %}
+
+   <form method="post">
+       {%csrf_token%}
+       {% for field in form%}
+           <br>
+           {{field.label_tag}}
+           <br>
+           {{field}}
+           <br>
+       {% endfor %}       
+       <br>
+       
+       <button type="submit"> Add </button>
+   </form>
+
+{% include 'partials/footer.html' %}
+{% endblock content%}

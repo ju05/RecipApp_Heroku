@@ -1,0 +1,30 @@
+{% load socialaccount %}
+{% include 'partials/head.html' %}
+
+    <title>Login</title>
+  <body>
+
+    <div class="container shadow-lg p-3 mb-5 bg-body rounded text-dark mt-5">
+        <div class="row justify-content-md-center">
+          <div class="col-md-5 bg-grey p-3">
+            <form method='post'class="form-signin">
+                <h1>Set the date and time to preparer the recipe:</h1>
+                        {%csrf_token%}
+                  
+                    <br>
+                    {{form.as_p}}
+                    
+                    <br>                
+                    
+                   <button name="recipe" class="btn btn-red btn-rounded btn-lg white-text font-weight-bold ml-lg-0" type="submit">
+                      <i class="white-text mr-2" aria-hidden="true"></i>Add to my Calendar</button>
+                   </form>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {% include 'partials/scripts.html' %}
+    {% include 'partials/footer.html' %}
+  </body>
+</html>

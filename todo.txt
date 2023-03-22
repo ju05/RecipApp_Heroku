@@ -1,0 +1,13 @@
+still need to do:
+
+- logic for creating the event title
+depending on the hour to be 'breakfast', 'brunch',
+'lunch' or 'dinner' and giving the user the option to choose the date
+
+- add recipe to favorites and create colections
+
+- add a comment about a recipe
+
+- add like if a comment is useful
+
+-make a better user profile

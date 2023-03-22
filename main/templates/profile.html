@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>My Profile</title>
+    <style>
+        .wrapper{            
+            text-align: center;
+            height: 300px;
+            padding: 12px;
+            background-color: #8b8182;
+        }
+        .test{
+            display: flex;
+            flex-direction: column;
+        }
+        .avatar{
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+        }
+        .user-name{
+            font-size: 18px;
+            margin-top: 14px;
+        }
+
+        li{
+            display: inline-block;
+            list-style: none;
+            text-align: center;
+            padding: 10px;            
+            margin: 5px;
+        }
+        
+        a{
+            text-decoration: none;
+            color:#fd29378e
+        }
+        a:hover{
+            color: bisque;
+        }
+        
+    </style>
+    </head>
+
+<body>  
+    {% load socialaccount %}
+    {% include 'partials/head.html' %}  
+    {% block content%}
+  <div class="test">
+    <div class="wrapper">
+        <img class= 'avatar' src = "{{profile.profile_picture}}">
+        <h1 class="'user-name">{{profile.first_name}}</h1>
+        <a href="{%url 'update_profile'%}" style="color: white;"> Update profile</a>
+    </div>
+
+    <div class="container shadow-lg p-3 mb-5 bg-body rounded w-100">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-12 p-5">
+                <ul class="info-li">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h4>From {{profile.city}}</h4>
+                    </li>
+                    <li>
+                        <a href="">Recipes</a>
+                    </li>
+                    <li>
+                        <a href="">Followers</a>
+                    </li>
+                    <li>
+                        <a href="">Following</a>
+                    </li>
+                </ul>
+            </div> 
+        </div>
+    </div>
+
+    <div class="container shadow-lg p-3 mb-5 bg-body rounded w-100">
+       <div class="row justify-content-md-start">
+            <div class="col col-lg-12 p-5">
+                <h1>About</h1><br>
+                <p>{{profile.about}}</p> 
+            </div>          
+        </div>
+    </div>      
+
+    {% include 'partials/footer.html' %}
+    {% endblock content %}
+</body>

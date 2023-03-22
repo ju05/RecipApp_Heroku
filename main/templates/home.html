@@ -1,0 +1,137 @@
+{% extends 'partials/head.html' %}
+{% block content %}
+
+    <style>
+       html,
+       body,
+       header,
+       .jarallax {
+       height: 1000px;
+       min-height: 800px;
+       }
+    </style> 
+   
+      <!-- Intro Section -->
+      
+      <div class="view jarallax" data-jarallax='{"speed": 0.2}'
+         style="background-image: url(https://images.unsplash.com/photo-1599297914860-1ccd36987a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)">
+         <div class="mask">
+            <div class="container h-100 d-flex justify-content-center align-items-center">
+               <div class="row">
+                  <div class="col-md-12 wow fadeIn">
+                     <div class="text-center white-text">
+                        <ul class="list-unstyled">
+                           <li>
+                              <h1 class="display-4 font-weight-bold white-text wow fadeIn"
+                                 data-wow-delay="0.3s">                                 
+                                 <strong>Hello, {{user.first_name}} <br>
+                                    What will you cook today?</strong>
+                                 
+                              </h1>
+                           </li>
+                           <li>
+                              <h5 class="grey-text description mb-5 wow fadeIn" data-wow-delay="0.4s">
+                                 Search for healthy recipes | {{total_recipes}} recipes
+                              </h5>
+                           </li>
+                           <hr>
+                           <form action="{% url 'search' %}" method="get">
+                              {%csrf_token%}
+                              <!--Accordion wrapper-->
+                              <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                                 <!-- Accordion card -->
+                                 <div class="card">
+                                    <!-- Card header -->
+                                    <div class="card-header" role="tab" id="headingOne1">
+                                       <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                                          aria-controls="collapseOne1">
+                                          <h5 class="mb-0">
+                                             Advanced Search <i class="fas fa-angle-down rotate-icon"></i>
+                                          </h5>
+                                          <small class="text-muted">Filter By Categories</small>
+                                       </a>
+                                    </div>
+                                    <!-- Card body -->
+                                    <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                                       <div class="card-body">
+                                          <!-- Material checked -->
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" class="form-check-input" value="15min" id="15min" name="15min">
+                                             <label class="form-check-label" for="breakfast">15 min </label>
+                                          </div>                                          
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" name ='Meal' class="form-check-input" value="Breakfast" id="Breakfast" name="Breakfast">
+                                             <label class="form-check-label" for="Breakfast">Breakfast</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" name ='Meal' class="form-check-input" value="Lunch" id="Lunch" name="Lunch">
+                                             <label class="form-check-label" for="Lunch">Lunch</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" name ='Meal' class="form-check-input" value="Dinner" id="Dinner" name="Dinner">
+                                             <label class="form-check-label" for="Dinner">Dinner</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" name ='Meal' class="form-check-input" value="Dessert" id="Dessert" name="Dessert">
+                                             <label class="form-check-label" for="Dessert">Dessert</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" class="form-check-input" value="on" id="Healthy" name="Healthy">
+                                             <label class="form-check-label" for="Healthy">Healthy</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" name = "Diet" class="form-check-input" value="Vegetarian" id="Vegetarian" name="dessert">
+                                             <label class="form-check-label" for="Vegetarian">Vegetarian</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" name = "Diet" class="form-check-input" value="Vegan" id="Vegan" name="Vegan">
+                                             <label class="form-check-label" for="Vegan">Vegan</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                             <input type="radio" name = "Diet" class="form-check-input" value="GlutenFree" id="GlutenFree" name="GlutenFree">
+                                             <label class="form-check-labell" for="GlutenFree">Gluten Free</label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- Accordion card -->
+                              <li class="wow fadeIn" data-wow-delay="0.4s">
+                                 <div class="md-form mb-0">
+                                    <input type="text" id="form51" class="form-control" name="search" style="color:white">
+                                    <label for="form51" class="" style='color: white' style="border-bottom:white">Search</label>
+                                 </div>
+                                 <button class="btn btn-white btn-rounded btn-lg orange-text font-weight-bold ml-lg-0" type="submit">
+                                    <i class="fas fa-search orange-text mr-2" aria-hidden="true"></i> Get Recipes</button>                                 
+                              </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>      
+      </form>
+      <!-- Footer -->
+      <footer class="page-footer text-center text-md-left unique-color-dark pt-0">
+         <!-- Copyright -->
+         <div class="footer-copyright text-center py-3">
+            <div class="container-fluid">
+               © 2022 Copyright: <a href="https://www.linkedin.com/in/juliana-schmidt-4832a168/" target="_blank"> Juliana Schmidt</a>
+            </div>
+         </div>
+         <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+      {% include 'partials/scripts.html' %}
+      <script>
+         // Animation init
+         new WOW().init();
+         
+         // Material Select Initialization
+         $(document).ready(function () {
+           $('.mdb-select').material_select();
+         });
+      </script>
+
+   {% endblock %}

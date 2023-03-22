@@ -1,0 +1,7 @@
+.recipe_img{
+    text-align: center;
+    max-width: 50%;
+    max-height: 50%;    
+    padding: 12px;    
+    display: flex;
+}

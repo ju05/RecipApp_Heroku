@@ -1,1 +1,1 @@
-web: gunicorn RecipApp.wsgi
+web: gunicorn recipapp.wsgi

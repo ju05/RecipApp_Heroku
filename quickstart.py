@@ -7,7 +7,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import sys 
-from .Google import convert_to_RFC_datetime
+from .RecipApp.Google import convert_to_RFC_datetime
 
 sys.path.append('C:\\Users\\JuJu\\Desktop\\RecipApp\\RecipApp')
 

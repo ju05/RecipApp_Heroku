@@ -96,10 +96,10 @@ WSGI_APPLICATION = 'RecipApp.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'recipeapp',
-            'USER':'recipappadm',
-            'PASSWORD': 'adm12345',
-            'HOST': 'recipeapp.ccusntviihbq.eu-north-1.rds.amazonaws.com',
+            'NAME': 'recipeapp_heroku',
+            'USER':'postgres',
+            'PASSWORD': '1948',
+            'HOST': 'localhost',
             'PORT': '5432'}
 }
 

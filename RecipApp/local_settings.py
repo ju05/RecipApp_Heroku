@@ -5,10 +5,11 @@ DEBUG = True
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'recipeapp',
-            'USER':'recipappadm',
-            'PASSWORD': 'adm12345',
-            'HOST': 'recipeapp.ccusntviihbq.eu-north-1.rds.amazonaws.com',
-            'PORT': '5432'}
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'recipeapp_heroku',
+        'USER':'postgres',
+        'PASSWORD': '1948',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
 }

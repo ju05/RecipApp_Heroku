@@ -8,7 +8,7 @@ from googleapiclient.errors import HttpError
 import sys 
 from RecipApp.Google import convert_to_RFC_datetime
 
-sys.path.append('C:\\Users\\JuJu\\Desktop\\RecipApp\\RecipApp')
+sys.path.append('RecipApp_Heroku\\RecipApp')
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar']
@@ -42,18 +42,18 @@ def create_event(request):
         # Call the Calendar API
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
         recipe = request.POST.get('recipe')
-        hour_adjustment = -2       
+        hour_adjustment = -2    
         
         event = {
         'summary': 'Prepare Lunch',
         'location': 'Home',
         'description': f'http://127.0.0.1:8000/detail/{recipe_id}',
         'start': {
-            'dateTime': convert_to_RFC_datetime(2022, 11, 1, 12 + hour_adjustment, 30),
+            'dateTime': convert_to_RFC_datetime(2023, 4, 18, 12 + hour_adjustment, 30),
             'timeZone': 'Asia/Jerusalem',
         },
         'end': {
-            'dateTime': convert_to_RFC_datetime(2022, 11, 1, 13 + hour_adjustment, 30),
+            'dateTime': convert_to_RFC_datetime(2023, 4, 18, 13 + hour_adjustment, 30),
             'timeZone': 'Asia/Jerusalem',
         },      
         'reminders': {

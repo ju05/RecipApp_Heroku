@@ -67,6 +67,6 @@ def populate_recipe(n):
 			ingredient = Ingredient.objects.get_or_create(name = name, unit = unit, amount = amount)
 			recipe_inst.ingredients.add(ingredient[0])	
 
-# populate_recipe(200)
+populate_recipe(200)
 print(recipe_ids)	
 

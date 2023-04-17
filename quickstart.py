@@ -8,7 +8,7 @@ from googleapiclient.errors import HttpError
 import sys 
 from RecipApp.Google import convert_to_RFC_datetime
 
-sys.path.append('RecipApp_Heroku\\RecipApp')
+sys.path.append('/app/RecipApp')
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar']

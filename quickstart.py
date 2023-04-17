@@ -30,7 +30,7 @@ def create_event(request):
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'RecipApp\\credentials.json', SCOPES)
+                'RecipApp\\client_secrets_file.json', SCOPES)
             creds = flow.run_local_server(port=56002)
         # Save the credentials for the next run
         with open('RecipApp\\token.json', 'w') as token:

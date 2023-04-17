@@ -6,7 +6,6 @@ from .models import Ingredient, Recipe, UserProfile
 from .forms import ProfileForm, RecipeForm, SignUpForm, AddEventForm
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.views import generic
 from quickstart import create_event
 import datetime
 

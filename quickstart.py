@@ -8,6 +8,7 @@ from googleapiclient.errors import HttpError
 import sys 
 from RecipApp.Google import convert_to_RFC_datetime
 
+cwd = os.getcwd()
 sys.path.append('/app/RecipApp')
 
 # If modifying these scopes, delete the file token.json.
@@ -72,3 +73,4 @@ def create_event(request):
     except HttpError as error:
         print('An error occurred: %s' % error)
 
+print(cwd)
